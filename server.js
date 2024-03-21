@@ -6,7 +6,7 @@ import morgan from 'morgan';
 
 //Routes
 import kickStarterRoutes from './Routes/Kickstarter.js'
-
+import bookRoutes from './Routes/GoodReads.js'
 const app = express();
 
 app.use(helmet());
@@ -17,15 +17,14 @@ app.use(express.urlencoded({extended:true}));
 
 //Routes
 app.use('/upcoming',kickStarterRoutes);
+app.use('/books',bookRoutes);
 
 // Mongoose setup
-const Port = 8000;
+const Port = 8001;
 
 const MONGO_URL = 'mongodb+srv://tedyyohanes97:Peeman200@cluster1.vs1vunz.mongodb.net/Books';
 
-mongoose.connect(MONGO_URL,{
-    useNewUrlParser: true,
-})
+mongoose.connect(MONGO_URL)
 .then(() => console.log('connected to DB'))
 .catch((error) => console.log(`${error} Sorry could not connect to db`));
 
