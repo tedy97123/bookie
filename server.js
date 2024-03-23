@@ -18,7 +18,22 @@ app.use(express.urlencoded({extended:true}));
 //Routes
 app.use('/upcoming',kickStarterRoutes);
 app.use('/books',bookRoutes);
-
+app.use('/dropDatabase', async function (req, res) {   
+    try {
+          // Get all collections
+          const collections = await mongoose.connection.db.collections();
+  
+          // Iterate over each collection and delete all documents
+          for (const collection of collections) {
+              await collection.deleteMany({}); // Empty filter to match all documents
+          }
+  
+          res.send("All documents in all collections deleted successfully");
+      } catch (error) {
+          console.error("Error deleting documents:", error);
+          res.status(500).send("Error deleting documents");
+      }
+  })
 // Mongoose setup
 const Port = 8001;
 
