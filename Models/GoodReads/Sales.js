@@ -38,13 +38,13 @@ const SalesSchema = new Schema(
     buy_link:{
         type:String,
     },
-    books: [
+    bookId: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Books",
       },
     ], 
-    accessID: [
+    accessId: [
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Access",

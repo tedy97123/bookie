@@ -51,7 +51,7 @@ const BooksSchema = new Schema(
               ref: "Sales",
             },
           ], 
-          accessID: [
+          accessId: [
             {
               type: mongoose.Schema.Types.ObjectId,
               ref: "Access",
