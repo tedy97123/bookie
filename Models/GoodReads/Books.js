@@ -4,34 +4,63 @@ const Schema = mongoose.Schema;
 
 const BooksSchema = new Schema(
     {
-        author_name: {
+        id: {
             type: String,
         },
-        first_publish_year: {
-            type: Number,
+        google_book: {
+            type:String
+        },
+        author_name: {
+            type: String,
+        }, 
+        description: {
+            type:String,
         },
         isbn: {
-            type: Array,
+            type: String, // Change to String
         },
-        number_of_pages_median: {
+        page_count: {
             type: Number,
         },
+        category:{
+            type:String
+        },
+        maturity_rating:{
+            type: String
+        },
         publish_year: {
-            type: Array,
+            type: String, // Change to String
+        },
+        image: [
+            {
+               data:Buffer,type:Schema.Types.String
+            },
+          ], 
+        previewLink: {
+            type:String
         },
         publisher: {
-            type: Array,
+            type: String, // Change to String
         },
         title: {
-            type: Array,
+            type: String, // Change to String
         },
-        first_sentence: {
-            type: String
-        }
- 
+        salesId: [
+            {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: "Sales",
+            },
+          ], 
+          accessID: [
+            {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: "Access",
+            },
+          ], 
     },
     { timestamps: true, toJSON: { getters: true } }
 );
+
 
 const Books = mongoose.model("Books", BooksSchema);
 export default Books;

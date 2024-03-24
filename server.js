@@ -34,6 +34,7 @@ app.use('/dropDatabase', async function (req, res) {
           res.status(500).send("Error deleting documents");
       }
   })
+  
 // Mongoose setup
 const Port = 8001;
 
