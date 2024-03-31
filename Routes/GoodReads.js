@@ -93,5 +93,17 @@ router.post("/goodReads", async (req, res) => {
         res.status(500).send("Error fetching data");
     }
 }); 
-   router.get('/getBooksByAuthor' , async (res,req) => {    } )
+
+
+  router.post('/getBooksByAuthor' , async (res,req) => {    
+   try{
+    const author = req.body;
+    console.log("author", author)
+    const books = await Books.find({'author_name':author});
+    res.send(200).json(books);
+    } catch(error){
+     res.send(404).json(error);
+    } 
+   } )
+
 export default router;
