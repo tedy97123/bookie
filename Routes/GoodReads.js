@@ -72,6 +72,7 @@ router.post("/goodReads", async (req, res) => {
                     salesId: sales._id
                 });
                 await access.save();
+                console.log('inserted object to DB ', access)
 
                 // Update salesId and accessId in Books model
                 await Books.findByIdAndUpdate(book._id, { $set: { salesId: sales._id, accessId: access._id } });
@@ -91,6 +92,6 @@ router.post("/goodReads", async (req, res) => {
         console.error("Error fetching Titles from goodReads", error.message);
         res.status(500).send("Error fetching data");
     }
-});
-
+}); 
+   router.get('/getBooksByAuthor' , async (res,req) => {    } )
 export default router;
