@@ -1,4 +1,11 @@
-// Dashboard
-import Home from './dashboard/Home';
+const SCREENS = {
+    LOGIN: 'LOGIN',
+    SIGNUP: 'SIGNUP',
+    HOME: 'HOME',
+    PROFILE: 'PROFILE',
+    SEARCH: 'SEARCH',
+    MONTHLYREADING: 'MONTHLYREADING',
+    READINGPROGRESSTRACKER: 'READINGPROGRESSTRACKER',
+}
 
-export {Home};
+export default SCREENS

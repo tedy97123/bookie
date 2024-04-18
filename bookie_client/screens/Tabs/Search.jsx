@@ -3,10 +3,11 @@ import { FlatList, Text, TextInput, View, StyleSheet, Image, Alert } from 'react
 import { Button, Icon, Card } from "react-native-elements";
 import { usePostBookTitleMutation } from '../../api/api.ts';
 
-const Home = () => {
+const Search = () => {
   const [bookInfo] = usePostBookTitleMutation();
   const [bookName, setBookName] = useState('');
   const [bookData, setBookData] = useState([]);
+  const [image , setImage] = useState();
   const [error, setError] = useState('');
 
   const handleSubmit = () => {
@@ -14,7 +15,8 @@ const Home = () => {
     bookInfo({ title: bookName })
       .unwrap()
       .then(updateResponse => {
-        console.log('Book:', updateResponse);
+        // console.log('Book:', updateResponse);
+        // setImage('Image',updateResponse[0].image[0]) 
         setBookData(updateResponse);
         setError('');
       })
@@ -28,10 +30,10 @@ const Home = () => {
   const renderBookItem = ({ item }) => (
     <Card>
       <Card.Title>{item.title}</Card.Title>
-      <Image 
-        source={{ uri: item.image}} 
+      {/* <Image 
+        source={{ uri: item.image[0]}} 
         style={styles.bookImage}
-      />
+      /> */}
       <Text>Author: {item.author_name}</Text>
       <Text>Category: {item.category}</Text>
       <Text>Year: {item.publish_year}</Text>
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     marginBottom: 10,
-    fontWeight: 'semi-bold'
+    fontWeight:  'bold'
   },
   input: {
     height: 40, 
@@ -99,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default Search;
