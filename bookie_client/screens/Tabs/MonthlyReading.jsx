@@ -40,6 +40,7 @@ const MonthlyReading = () => {
       <Text>
         Todo List
       </Text>
+      
     </View>
 </View> 
 ); 
